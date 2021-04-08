@@ -1,0 +1,220 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- I used the starter template from the bootstrap website for version 4 at this link: https://getbootstrap.com/docs/4.1/getting-started/introduction/#css -->
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+        integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <link rel="stylesheet" href="styles.css">
+    <title>Emoji Ecommerce</title>
+</head>
+
+<body>
+    <!-- using the jumbotron class form  -->
+    <div class="jumbotron text-center" id="homeHeader">
+        <div id="headerTextBox">
+            <h1>Emoji Ecommerce</h1>
+            <p>Your go to online store for buying and owning an emoji</p>
+        </div>
+
+    </div>
+
+    <nav class="navbar navbar-expand-sm bg-dark navbar-dark justify-content-center" id="navigation">
+        <!-- The button required for when the screen size is really small and the menu bar collapses -->
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <!-- I added justify content center as a class so the navbar links are in the center of the page -->
+        <div class="collapse navbar-collapse justify-content-center" id="collapsibleNavbar">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="navbar-brand" href="index.html">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="navbar-brand" href="about.html">About us</a>
+                </li>
+                <li class="nav-item">
+                    <a class="navbar-brand" href="products.html">Product Catalogue</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <br>
+    <br>
+
+
+    <!-- below is the use of the bootstrap grid system -->
+    <h2 class="text-center">Welcome to the emoji online store. Buy one of the emoji's below and brag to your friends for
+        the rest
+        of your life!
+    </h2>
+
+    <br>
+
+    <div class="text-center">
+        <h1><a href="#form">Click here to Make a bid!</a></button></h1>
+    </div>
+
+    <br>
+
+
+
+
+    <br>
+
+    <h2 class="text-center">Make your bid for the emoji you want below!</h2>
+
+    <br>
+
+    <form id="form">
+        <div class="form-group row text-center">
+            <label class="col-sm-6 col-form-label" for="emojiSelect">Choose your emoji!</label>
+            <div class="col-sm-5">
+                <select class="form-control" id="emojiSelect">
+                    <option>Clown</option>
+                    <option>Unicorn</option>
+                    <option>Heart</option>
+                    <option>Nerd</option>
+                    <option>Sick</option>
+                    <option>HeartEyes</option>
+                    <option>ThumbsUp</option>
+                    <option>Skull</option>
+                    <option>Poop</option>
+                    <option>Devil</option>
+                </select>
+            </div>
+
+        </div>
+
+        <div class="form-group row text-center">
+            <label class="col-sm-6 col-form-label" for="bid">Bid amount</label>
+            <div class="col-sm-5">
+                <input type="text" class="form-control" id="bid" placeholder="R1 billion">
+            </div>
+        </div>
+
+    </form>
+    <br>
+
+    <h2 class="text-center">Top bids so far</h2>
+
+
+    <div style="width: 75%;" class="container">
+        <table class="table table-dark table-striped table-responsive-sm">
+            <thead>
+                <tr>
+                    <th scope="col-sm-2">#</th>
+                    <th scope="col-sm-2">Name</th>
+                    <th scope="col-sm-2">Emoji</th>
+                    <th scope="col-sm-2">Amount</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <th scope="row">1</th>
+                    <td>Grim Reaper</td>
+                    <td>Skull</td>
+                    <td>R 420 000</td>
+                </tr>
+                <tr>
+                    <th scope="row">2</th>
+                    <td>Donald Trump</td>
+                    <td>Poop</td>
+                    <td>R 369 000</td>
+                </tr>
+                <tr>
+                    <th scope="row">3</th>
+                    <td>Mark Zuckerberg</td>
+                    <td>Unicorn</td>
+                    <td>R 222 222</td>
+                </tr>
+            </tbody>
+        </table>
+
+    </div>
+
+
+
+
+
+    <!-- using the bootstrap grid system so that the reviews look nice on all devices -->
+    <div id="reviews" class="container">
+
+        <div class="row">
+            <div class="col-sm reviewCard card shadow p-3 mb-5 bg-white rounded" id="firstReview">
+
+                <div class="quote">
+                    "I bought the Moon emoji and it was the best decision I ever made "
+                </div>
+
+                <div class="name">
+                    Elon Musk 🌙
+                </div>
+
+            </div>
+
+            <div class="col-sm reviewCard card shadow p-3 mb-5 bg-white rounded" id="secondReview">
+
+                <div class="quote">
+                    "Basketball is a large part of my life and I'm glad I could buy the emoji here on Emoji
+                    Ecommerce"
+                </div>
+
+                <div class="name">
+                    Michael Jordan 🏀
+                </div>
+
+            </div>
+
+            <div class="col-sm reviewCard card shadow p-3 mb-5 bg-white rounded" id="thirdReview">
+
+                <div class="quote">
+                    "The best emoji marketplace out there by miles! I'm the proud owner of the croc"
+                </div>
+
+                <div class="name">
+                    Steve Irwin 🐊
+                </div>
+
+            </div>
+
+        </div>
+
+
+    </div>
+
+
+    </div>
+
+
+
+
+
+
+
+
+
+    </div>
+
+    <!-- The Javascript that bootstrap needs for all the different components to work -->
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous">
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"
+        integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous">
+    </script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"
+        integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous">
+    </script>
+</body>
+
+</html>

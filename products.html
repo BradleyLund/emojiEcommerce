@@ -1,0 +1,142 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- I used the starter template from the bootstrap website for version 4 at this link: https://getbootstrap.com/docs/4.1/getting-started/introduction/#css -->
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+        integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <link rel="stylesheet" href="styles.css">
+    <title>Emoji Ecommerce</title>
+</head>
+
+<body>
+
+    <!-- using the jumbotron class form  -->
+    <div class="jumbotron text-center" id="homeHeader">
+        <div id="headerTextBox">
+            <h1>Emoji Ecommerce</h1>
+            <p>Your go to online store for buying and owning an emoji</p>
+        </div>
+
+    </div>
+
+    <nav class="navbar navbar-expand-sm bg-dark navbar-dark justify-content-center" id="navigation">
+        <!-- The button required for when the screen size is really small and the menu bar collapses -->
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <!-- I added justify content center as a class so the navbar links are in the center of the page -->
+        <div class="collapse navbar-collapse justify-content-center" id="collapsibleNavbar">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="navbar-brand" href="index.html">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="navbar-brand" href="about.html">About us</a>
+                </li>
+                <li class="nav-item">
+                    <a class="navbar-brand" href="products.html">Product Catalogue</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+
+    <br>
+    <div>
+        Check out all the products we have below, click on them to find out more information and the pricing for
+        each emoji. Buy yours before someone else does!
+    </div>
+    <br>
+
+    <!-- all images have the img-thumbnail class which is a responsive class, the class makes the images change 
+            in relation to the width/height of the device that is being used to view the webpage, so it will be smaller
+        when on a phone and larger when on a laptop -->
+    <div class="container-fluid">
+        <div class="row align-items-center">
+            <div class="col text-center text-center ">
+                <!-- using img-thumbnail already makes the borders rounded -->
+
+                <!-- added a box-shadow but you can't see it too well because of the linear gradient background -->
+                <img src="clown.png" alt="clown" class="img-thumbnail shadow p-3 mb-5 bg-white rounded">
+                <!--using img-thumbnail gives each image a rounded 1px border-->
+                <p class="lead">
+                    You could be the class clown if you buy this emoji!
+                </p>
+            </div>
+            <div class="col text-center text-center">
+                <img src="unicorn.png" alt="unicorn" class="img-thumbnail shadow p-3 mb-5 bg-white rounded">
+                <p class="lead">
+                    If you own this emoji, you will turn your company into a unicorn
+                </p>
+            </div>
+        </div>
+
+        <div class="row align-items-center">
+            <div class="col text-center">
+                <img src="devil.png" alt="devil" class="img-thumbnail shadow p-3 mb-5 bg-white rounded" height="100px">
+                <p class="lead">
+                    Show your feisty side to your mates with this emoji you naughty devil!
+                </p>
+            </div>
+            <div class="col text-center">
+                <img src="heart.png" alt="heart" class="img-thumbnail shadow p-3 mb-5 bg-white rounded">
+                <p class="lead">
+                    You could own love if you just bought this one </p>
+            </div>
+        </div>
+        <div class="row align-items-center">
+            <div class="col text-center">
+                <img src="heartEyes.png" alt="heartEyes" class="img-thumbnail shadow p-3 mb-5 bg-white rounded">
+                <p class="lead">
+                    Charge royalties whenever those annoying love birds use this emoji
+                </p>
+            </div>
+            <div class="col text-center">
+                <img src="nerd.png" alt="nerd" class="img-thumbnail shadow p-3 mb-5 bg-white rounded">
+                <p class="lead">
+                    Be the first cool nerd by buying this guy
+                </p>
+            </div>
+        </div>
+
+        <div class="row align-items-center">
+            <div class="col text-center">
+                <img src="poop.png" alt="poop" class="img-thumbnail shadow p-3 mb-5 bg-white rounded">
+                <p class="lead">
+                    Who doesn't like a scoop of chocolate ice-cream ....
+                </p>
+            </div>
+            <div class="col text-center">
+                <img src="sick.png" alt="sick" class="img-thumbnail shadow p-3 mb-5 bg-white rounded">
+                <p class="lead">
+                    Instead of calling in sick, just send your boss this emoji
+                </p>
+            </div>
+        </div>
+
+        <div class="row align-items-center">
+            <div class="col text-center">
+                <img src="skull.png" alt="skull" class="img-thumbnail shadow p-3 mb-5 bg-white rounded">
+                <p class="lead">
+                    Buy this one now before the grim reaper does
+                </p>
+            </div>
+            <div class="col text-center">
+                <img src="thumbsup.png" alt="thumbsup" class="img-thumbnail shadow p-3 mb-5 bg-white rounded">
+                <p class="lead">
+                    Congrats for making it all the way to the end of the list and reading all the details
+                </p>
+            </div>
+        </div>
+    </div>
+
+</body>
+
+</html>
