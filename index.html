@@ -94,7 +94,7 @@
         </div>
 
         <div class="form-group row text-center">
-            <label class="col-sm-6 col-form-label" for="bid">Bid amount</label>
+            <label class="col-sm-4 col-form-label" for="bid">Bid amount</label>
             <div class="col-sm-5">
                 <input type="text" class="form-control" id="bid" placeholder="R1 billion">
             </div>
@@ -140,50 +140,80 @@
 
     </div>
 
+    <br>
 
-
+    <h2 class="text-center">Reviews from some of our customers</h2>
 
 
     <!-- using the bootstrap grid system so that the reviews look nice on all devices -->
     <div id="reviews" class="container">
 
         <div class="row">
-            <div class="col-sm reviewCard card shadow p-3 mb-5 bg-white rounded" id="firstReview">
+            <div class="col-sm">
 
-                <div class="quote">
-                    "I bought the Moon emoji and it was the best decision I ever made "
+
+                <!-- was struggling to get the look of the cards that I wanted and 
+                    the sizing. played around with p and mb classes but decided 
+                    containerising the cards another level would help me have more control -->
+                <div class="cardContainer">
+
+                    <div class="reviewCard shadow p-4 mb-5 bg-black rounded">
+                        <div class="quote">
+                            "I bought the Moon emoji and it was the best decision I ever made "
+                        </div>
+
+                        <div class="name font-weight-bold">
+                            - Elon Musk 🌙
+                        </div>
+                    </div>
+
                 </div>
 
-                <div class="name">
-                    Elon Musk 🌙
+
+            </div>
+
+
+
+
+            <div class="col-sm">
+
+                <div class="cardContainer">
+                    <div class="reviewCard shadow p-4 mb-5 bg-white rounded">
+
+                        <div class="quote">
+                            "Basketball is a large part of my life and I'm glad I could buy the emoji here on Emoji
+                            Ecommerce"
+                        </div>
+
+                        <div class="name  font-weight-bold">
+                            - Michael Jordan 🏀
+                        </div>
+
+                    </div>
                 </div>
 
             </div>
 
-            <div class="col-sm reviewCard card shadow p-3 mb-5 bg-white rounded" id="secondReview">
+            <div class="col-sm">
 
-                <div class="quote">
-                    "Basketball is a large part of my life and I'm glad I could buy the emoji here on Emoji
-                    Ecommerce"
+                <div class="cardContainer">
+
+                    <div class="reviewCard shadow p-4 mb-5 bg-white rounded" id="thirdReview">
+
+                        <div class="quote">
+                            "The best emoji marketplace out there by miles! I'm the proud owner of the croc"
+                        </div>
+
+                        <div class="name font-weight-bold">
+                            - Steve Irwin 🐊
+                        </div>
+
+                    </div>
                 </div>
 
-                <div class="name">
-                    Michael Jordan 🏀
-                </div>
 
             </div>
 
-            <div class="col-sm reviewCard card shadow p-3 mb-5 bg-white rounded" id="thirdReview">
-
-                <div class="quote">
-                    "The best emoji marketplace out there by miles! I'm the proud owner of the croc"
-                </div>
-
-                <div class="name">
-                    Steve Irwin 🐊
-                </div>
-
-            </div>
 
         </div>
 

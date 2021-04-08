@@ -60,8 +60,10 @@ got this snippet from https://stackoverflow.com/questions/20079782/changing-the-
     align-items: center;
 }
 
+.cardContainer {
+    margin: 30px;
+}
 
-.reviewCard {
-    height: 300px;
-    width: 300px;
+.name {
+    float: right;
 }
