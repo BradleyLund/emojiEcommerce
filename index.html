@@ -46,175 +46,180 @@
         </div>
     </nav>
 
-    <br>
-    <br>
 
 
-    <!-- below is the use of the bootstrap grid system -->
-    <h2 class="text-center">Welcome to the emoji online store. Buy one of the emoji's below and brag to your friends for
-        the rest
-        of your life!
-    </h2>
+    <div class="backChange">
 
-    <br>
+        <!-- below is the use of the bootstrap grid system -->
+        <h2 id="welcome" class="text-center">Welcome to the emoji online store. Buy one of the emoji's below and brag to
+            your friends
+            for
+            the rest
+            of your life!
+        </h2>
 
-    <div class="text-center">
-        <h1><a href="#form">Click here to Make a bid!</a></button></h1>
-    </div>
+        <br>
 
-    <br>
+        <div class="text-center">
+            <h1><a href="#form">Click here to Make a bid!</a></button></h1>
+        </div>
+
+        <br>
 
 
 
 
-    <br>
+        <br>
 
-    <h2 class="text-center">Make your bid for the emoji you want below!</h2>
+        <h2 class="text-center">Make your bid for the emoji you want below!</h2>
 
-    <br>
+        <br>
 
-    <form id="form">
-        <div class="form-group row text-center">
-            <label class="col-sm-6 col-form-label" for="emojiSelect">Choose your emoji!</label>
-            <div class="col-sm-5">
-                <select class="form-control" id="emojiSelect">
-                    <option>Clown</option>
-                    <option>Unicorn</option>
-                    <option>Heart</option>
-                    <option>Nerd</option>
-                    <option>Sick</option>
-                    <option>HeartEyes</option>
-                    <option>ThumbsUp</option>
-                    <option>Skull</option>
-                    <option>Poop</option>
-                    <option>Devil</option>
-                </select>
+        <form id="form">
+            <div class="form-group row text-center">
+                <label class="col-sm-6 col-form-label" for="emojiSelect">Choose your emoji!</label>
+                <div class="col-sm-5">
+                    <select class="form-control" id="emojiSelect">
+                        <option>Clown</option>
+                        <option>Unicorn</option>
+                        <option>Heart</option>
+                        <option>Nerd</option>
+                        <option>Sick</option>
+                        <option>HeartEyes</option>
+                        <option>ThumbsUp</option>
+                        <option>Skull</option>
+                        <option>Poop</option>
+                        <option>Devil</option>
+                    </select>
+                </div>
+
             </div>
+
+            <div class="form-group row text-center">
+                <label class="col-sm-6 col-form-label" for="bid">Bid amount</label>
+                <div class="col-sm-5">
+                    <input type="text" class="form-control" id="bid" placeholder="R1 billion">
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-6 text-center">
+                    <input class="btn btn-primary" type="submit" value="Submit">
+                </div>
+
+            </div>
+
+        </form>
+        <br>
+
+        <h2 class="text-center">Top bids so far</h2>
+
+
+        <div style="width: 75%;" class="container">
+            <table class="table table-dark table-striped table-responsive-sm">
+                <thead>
+                    <tr>
+                        <th scope="col-sm-2">#</th>
+                        <th scope="col-sm-2">Name</th>
+                        <th scope="col-sm-2">Emoji</th>
+                        <th scope="col-sm-2">Amount</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <th scope="row">1</th>
+                        <td>Grim Reaper</td>
+                        <td>Skull</td>
+                        <td>R 420 000</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">2</th>
+                        <td>Donald Trump</td>
+                        <td>Poop</td>
+                        <td>R 369 000</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">3</th>
+                        <td>Mark Zuckerberg</td>
+                        <td>Unicorn</td>
+                        <td>R 222 222</td>
+                    </tr>
+                </tbody>
+            </table>
 
         </div>
 
-        <div class="form-group row text-center">
-            <label class="col-sm-6 col-form-label" for="bid">Bid amount</label>
-            <div class="col-sm-5">
-                <input type="text" class="form-control" id="bid" placeholder="R1 billion">
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-sm-6 text-center">
-                <input class="btn btn-primary" type="submit" value="Submit">
-            </div>
+        <br>
 
-        </div>
-
-    </form>
-    <br>
-
-    <h2 class="text-center">Top bids so far</h2>
+        <h2 class="text-center">Reviews from some of our customers</h2>
 
 
-    <div style="width: 75%;" class="container">
-        <table class="table table-dark table-striped table-responsive-sm">
-            <thead>
-                <tr>
-                    <th scope="col-sm-2">#</th>
-                    <th scope="col-sm-2">Name</th>
-                    <th scope="col-sm-2">Emoji</th>
-                    <th scope="col-sm-2">Amount</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <th scope="row">1</th>
-                    <td>Grim Reaper</td>
-                    <td>Skull</td>
-                    <td>R 420 000</td>
-                </tr>
-                <tr>
-                    <th scope="row">2</th>
-                    <td>Donald Trump</td>
-                    <td>Poop</td>
-                    <td>R 369 000</td>
-                </tr>
-                <tr>
-                    <th scope="row">3</th>
-                    <td>Mark Zuckerberg</td>
-                    <td>Unicorn</td>
-                    <td>R 222 222</td>
-                </tr>
-            </tbody>
-        </table>
+        <!-- using the bootstrap grid system so that the reviews look nice on all devices -->
+        <div id="reviews" class="container">
 
-    </div>
-
-    <br>
-
-    <h2 class="text-center">Reviews from some of our customers</h2>
+            <div class="row">
+                <div class="col-sm">
 
 
-    <!-- using the bootstrap grid system so that the reviews look nice on all devices -->
-    <div id="reviews" class="container">
-
-        <div class="row">
-            <div class="col-sm">
-
-
-                <!-- was struggling to get the look of the cards that I wanted and 
+                    <!-- was struggling to get the look of the cards that I wanted and 
                     the sizing. played around with p and mb classes but decided 
                     containerising the cards another level would help me have more control -->
-                <div class="cardContainer">
+                    <div class="cardContainer">
 
-                    <div class="reviewCard shadow p-4 mb-5 bg-dark rounded">
-                        <div class="quote">
-                            "I bought the Moon emoji and it was the best decision I ever made "
+                        <div class="reviewCard shadow p-4 mb-5 bg-dark rounded">
+                            <div class="quote">
+                                "I bought the Moon emoji and it was the best decision I ever made "
+                            </div>
+
+                            <div class="name font-weight-bold">
+                                - Elon Musk 🌙
+                            </div>
                         </div>
 
-                        <div class="name font-weight-bold">
-                            - Elon Musk 🌙
+                    </div>
+
+
+                </div>
+
+
+
+
+                <div class="col-sm">
+
+                    <div class="cardContainer">
+                        <div class="reviewCard shadow p-4 mb-5 bg-dark rounded">
+
+                            <div class="quote">
+                                "Basketball is a large part of my life and I'm glad I could buy the emoji here on Emoji
+                                Ecommerce"
+                            </div>
+
+                            <div class="name  font-weight-bold">
+                                - Michael Jordan 🏀
+                            </div>
+
                         </div>
                     </div>
 
                 </div>
 
+                <div class="col-sm">
 
-            </div>
+                    <div class="cardContainer">
 
+                        <div class="reviewCard shadow p-4 mb-5 bg-dark rounded" id="thirdReview">
 
+                            <div class="quote">
+                                "The best emoji marketplace out there by miles! I'm the proud owner of the croc"
+                            </div>
 
+                            <div class="name font-weight-bold">
+                                - Steve Irwin 🐊
+                            </div>
 
-            <div class="col-sm">
-
-                <div class="cardContainer">
-                    <div class="reviewCard shadow p-4 mb-5 bg-dark rounded">
-
-                        <div class="quote">
-                            "Basketball is a large part of my life and I'm glad I could buy the emoji here on Emoji
-                            Ecommerce"
                         </div>
-
-                        <div class="name  font-weight-bold">
-                            - Michael Jordan 🏀
-                        </div>
-
                     </div>
-                </div>
 
-            </div>
 
-            <div class="col-sm">
-
-                <div class="cardContainer">
-
-                    <div class="reviewCard shadow p-4 mb-5 bg-dark rounded" id="thirdReview">
-
-                        <div class="quote">
-                            "The best emoji marketplace out there by miles! I'm the proud owner of the croc"
-                        </div>
-
-                        <div class="name font-weight-bold">
-                            - Steve Irwin 🐊
-                        </div>
-
-                    </div>
                 </div>
 
 
@@ -225,8 +230,6 @@
 
 
     </div>
-
-
     </div>
 
 
