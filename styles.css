@@ -13,6 +13,15 @@
 
 }
 
+dialog {
+    text-align: center;
+}
+
+/* make all of the elements that are clickable get the correct mouse pointer */
+a[href], input[type='submit'], input[type='image'], label[for], select, button, .pointer, .emoji {
+    cursor: pointer;
+}
+
 
 /* I wanted to space out the navbar elements a bit more for better distinction between each of them, I googled and
 got this snippet from https://stackoverflow.com/questions/20079782/changing-the-space-between-each-item-in-bootstrap-navbar*/
