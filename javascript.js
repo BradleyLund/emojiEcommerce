@@ -121,6 +121,8 @@ function closeDialog() {
 $(document).ready(function () {
   // Close dialog function
 
+  // in the dialog box each product should be allowed to add to cart
+
   // create a dialog box like in the other projects that come up for the diferent emojis for sale
   $(".emoji").click(function (event) {
     for (let emoji of emojis) {
@@ -130,14 +132,31 @@ $(document).ready(function () {
         let emojiName = document.createElement("h2");
         let price = document.createElement("h4");
         let description = document.createElement("h4");
+        let addToCart = document.createElement("button");
+        let quantityInput = document.createElement("input");
         let cancelButton = document.createElement("button");
+
         cancelButton.setAttribute("id", "cancel");
         cancelButton.setAttribute("type", "reset");
+
+        quantityInput.setAttribute("type", "number");
+        quantityInput.setAttribute("min", "1");
+
+        // need to pass to addtoCart function the object that we are adding and the quantity from the dialog
+        // we can give the button an
+
+        // it is something like this. just add it an event listener to the button each time it is created with the function and the variables
+
+        // need to add the onclick event to each of the images and to run the function for each of the cars
+        imageElement.addEventListener("click", function (e) {
+          car.showMore(dialog);
+        });
 
         emojiName.innerHTML = emoji.name;
         price.innerHTML = "Price: R" + emoji.price;
         description.innerHTML = emoji.description;
         cancelButton.innerHTML = "Close";
+        addToCart.innerHTML = "Add to Cart";
 
         cancelButton.setAttribute("onclick", "closeDialog();");
 
@@ -145,6 +164,8 @@ $(document).ready(function () {
         dialog.appendChild(price);
         dialog.appendChild(description);
         dialog.appendChild(cancelButton);
+        dialog.appendChild(quantityInput);
+        dialog.appendChild(addToCart);
 
         dialog.setAttribute("id", "dialog");
 
