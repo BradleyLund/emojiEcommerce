@@ -132,7 +132,7 @@ $(document).ready(function () {
     cart.push({ name: emoji.name, quantity: quantity, price: emoji.price });
     console.log(cart);
 
-    localStorage.setItem("shoppingCart") = JSON.stringify(cart);
+    localStorage.setItem("shoppingCart", JSON.stringify(cart));
 
     // make an alert saying the item has been added to cart
   }
@@ -196,4 +196,10 @@ $(document).ready(function () {
   });
 
   // functions to display the cart on the shopping cart page:
+
+  document.getElementById("cartDetails").innerHTML = localStorage.getItem(
+    "shoppingCart"
+  );
+
+  console.log(JSON.parse(localStorage.getItem("shoppingCart")));
 });
