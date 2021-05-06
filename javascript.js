@@ -103,8 +103,6 @@ let emojis = [
   thumbsUpEmoji,
 ];
 
-console.log(emojis);
-
 function closeDialog() {
   // once the dialog is open there is an element on the DOM with the id of dialog
   let dialog = document.getElementById("dialog");
@@ -119,6 +117,26 @@ function closeDialog() {
 }
 
 $(document).ready(function () {
+  // initialize the cart array
+  let cart = [];
+
+  if (localStorage.getItem("shoppingCart") === null) {
+    localStorage.setItem("shoppingCart", JSON.stringify(cart));
+  } else {
+    cart = JSON.parse(localStorage.getItem("shoppingCart"));
+  }
+
+  function addToCart(emoji) {
+    let quantity = document.getElementById("quantityInput").value;
+    console.log(quantity, emoji.name);
+    cart.push({ name: emoji.name, quantity: quantity, price: emoji.price });
+    console.log(cart);
+
+    localStorage.setItem("shoppingCart") = JSON.stringify(cart);
+
+    // make an alert saying the item has been added to cart
+  }
+
   // Close dialog function
 
   // in the dialog box each product should be allowed to add to cart
@@ -127,12 +145,11 @@ $(document).ready(function () {
   $(".emoji").click(function (event) {
     for (let emoji of emojis) {
       if (emoji.id == event.target.id) {
-        console.log(emoji);
         let dialog = document.createElement("dialog");
         let emojiName = document.createElement("h2");
         let price = document.createElement("h4");
         let description = document.createElement("h4");
-        let addToCart = document.createElement("button");
+        let addToCartButton = document.createElement("button");
         let quantityInput = document.createElement("input");
         let cancelButton = document.createElement("button");
 
@@ -140,23 +157,25 @@ $(document).ready(function () {
         cancelButton.setAttribute("type", "reset");
 
         quantityInput.setAttribute("type", "number");
+        quantityInput.setAttribute("id", "quantityInput");
         quantityInput.setAttribute("min", "1");
 
         // need to pass to addtoCart function the object that we are adding and the quantity from the dialog
         // we can give the button an
 
+        addToCartButton.addEventListener("click", function (e) {
+          addToCart(emoji);
+        });
+
         // it is something like this. just add it an event listener to the button each time it is created with the function and the variables
 
         // need to add the onclick event to each of the images and to run the function for each of the cars
-        imageElement.addEventListener("click", function (e) {
-          car.showMore(dialog);
-        });
 
         emojiName.innerHTML = emoji.name;
         price.innerHTML = "Price: R" + emoji.price;
         description.innerHTML = emoji.description;
         cancelButton.innerHTML = "Close";
-        addToCart.innerHTML = "Add to Cart";
+        addToCartButton.innerHTML = "Add to Cart";
 
         cancelButton.setAttribute("onclick", "closeDialog();");
 
@@ -165,7 +184,7 @@ $(document).ready(function () {
         dialog.appendChild(description);
         dialog.appendChild(cancelButton);
         dialog.appendChild(quantityInput);
-        dialog.appendChild(addToCart);
+        dialog.appendChild(addToCartButton);
 
         dialog.setAttribute("id", "dialog");
 
@@ -175,4 +194,6 @@ $(document).ready(function () {
       }
     }
   });
+
+  // functions to display the cart on the shopping cart page:
 });

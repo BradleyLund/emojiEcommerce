@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- I used the starter template from the bootstrap website for version 4 at this link: https://getbootstrap.com/docs/4.1/getting-started/introduction/#css -->
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+        integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <link rel="stylesheet" href="styles.css">
+    <title>Emoji Ecommerce</title>
+</head>
+
+<body>
+    <!-- I have copy and pasted the structure for each of the new pages I added but I'm not sure if that's good practice -->
+    <!-- using the jumbotron class form  -->
+    <div class="jumbotron text-center" id="homeHeader">
+        <div id="headerTextBox">
+            <h1>Emoji Ecommerce</h1>
+            <p>Your go to online store for buying and owning an emoji</p>
+        </div>
+
+    </div>
+
+    <nav class="navbar navbar-expand-sm bg-dark navbar-dark justify-content-center" id="navigation">
+        <!-- The button required for when the screen size is really small and the menu bar collapses -->
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <!-- I added justify content center as a class so the navbar links are in the center of the page -->
+        <div class="collapse navbar-collapse justify-content-center" id="collapsibleNavbar">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="navbar-brand" href="index.html">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="navbar-brand" href="about.html">About us</a>
+                </li>
+                <li class="nav-item">
+                    <a class="navbar-brand" href="products.html">Product Catalogue</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+
+    <div class="backChange text-center" id="aboutUs">
+        <h3>Check Out?</h3>
+    </div>
+
+    <div id="cartDetails"></div>
+
+
+    <!-- set up a nice table div maybe with each row added like we did with the songs detail stuff and have a remove from cart
+    option etc  -->
+
+
+
+    <!-- The Javascript that bootstrap needs for all the different components to work -->
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous">
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"
+        integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous">
+    </script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"
+        integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous">
+    </script>
+
+    <script src="javascript.js"></script>
+
+
+</body>
+
+</html>
