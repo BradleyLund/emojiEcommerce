@@ -105,7 +105,7 @@ got this snippet from https://stackoverflow.com/questions/20079782/changing-the-
     padding-bottom: 100px;
     padding-right: 30px;
     padding-left: 30px;
-    height: 450px;
+    height: auto;
 }
 
 /* Animating a change of the background color of the div */
