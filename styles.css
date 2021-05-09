@@ -108,6 +108,20 @@ got this snippet from https://stackoverflow.com/questions/20079782/changing-the-
     height: auto;
 }
 
+.emoji {
+    width: 400px;
+}
+
+/* animating the item images to expand when hovered over */
+
+.emoji:hover {
+    width: 800px;
+    /* adding a css filter to each of the images on hover */
+    filter: contrast(200%);
+
+
+}
+
 /* Animating a change of the background color of the div */
 
 .backChange {

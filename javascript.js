@@ -183,8 +183,8 @@ $(document).ready(function () {
         dialog.appendChild(price);
         dialog.appendChild(description);
         dialog.appendChild(cancelButton);
-        dialog.appendChild(quantityInput);
-        dialog.appendChild(addToCartButton);
+        // dialog.appendChild(quantityInput);
+        // dialog.appendChild(addToCartButton);
 
         dialog.setAttribute("id", "dialog");
 
