@@ -126,13 +126,59 @@ $(document).ready(function () {
     cart = JSON.parse(localStorage.getItem("shoppingCart"));
   }
 
+  // code to populate the check out list
+  function loadCartList() {
+    if (document.getElementById("cartDetails") != null) {
+      //basically checking if the user is on the cart page so the div would be there to be loaded
+      cartDetailsDiv = document.getElementById("cartDetails");
+      if (cart.length == 0) {
+        cartDetailsDiv.innerHTML =
+          "You have no items in your cart, go to the product catalogue page to see our available products";
+      } else {
+        // create the table
+        let table = document.createElement("table");
+        let headerRow = document.createElement("tr");
+
+        // create the headers
+        let nameHeader = document.createElement("th");
+        let quantityHeader = document.createElement("th");
+        let priceHeader = document.createElement("th");
+        let totalHeader = document.createElement("th");
+
+        // put the headers text in the element
+        nameHeader.innerHTML = "Item";
+        quantityHeader.innerHTML = "Quantity";
+        priceHeader.innerHTML = "Price";
+        totalHeader.innerHTML = "Total";
+
+        cart.forEach(function (item) {
+          let itemTotal = item.price * item.quantity;
+
+          // make a table with item , quantity, price total and then at the bottom a subtotal
+          let nameDetail = document.createElement("h3");
+          let quantityDetail = document.createElement("h3");
+          let priceDetail = document.createElement("h3");
+          let itemTotalDetail = document.createElement("h3");
+
+          nameDetail.innerHTML = item.name;
+          quantityDetail.innerHTML = item.quantityDetail;
+          priceDetail.innerHTML = "R " + item.price;
+          itemTotalDetail.innerHTML = "R" + itemTotal;
+        });
+      }
+    }
+  }
+
   function addToCart(emoji) {
     let quantity = document.getElementById("quantityInput").value;
-    console.log(quantity, emoji.name);
+    // console.log(quantity, emoji.name);
     cart.push({ name: emoji.name, quantity: quantity, price: emoji.price });
-    console.log(cart);
+    // console.log(cart);
 
     localStorage.setItem("shoppingCart", JSON.stringify(cart));
+
+    // reload the cart list on the cart page
+    loadCartList();
 
     // make an alert saying the item has been added to cart
   }
@@ -183,8 +229,8 @@ $(document).ready(function () {
         dialog.appendChild(price);
         dialog.appendChild(description);
         dialog.appendChild(cancelButton);
-        // dialog.appendChild(quantityInput);
-        // dialog.appendChild(addToCartButton);
+        dialog.appendChild(quantityInput);
+        dialog.appendChild(addToCartButton);
 
         dialog.setAttribute("id", "dialog");
 
@@ -195,11 +241,6 @@ $(document).ready(function () {
     }
   });
 
-  // functions to display the cart on the shopping cart page:
-
-  document.getElementById("cartDetails").innerHTML = localStorage.getItem(
-    "shoppingCart"
-  );
-
-  console.log(JSON.parse(localStorage.getItem("shoppingCart")));
+  //load up the div with the items in our trolley
+  loadCartList();
 });
