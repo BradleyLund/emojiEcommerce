@@ -130,7 +130,7 @@ $(document).ready(function () {
   function loadCartList() {
     if (document.getElementById("cartDetails") != null) {
       //basically checking if the user is on the cart page so the div would be there to be loaded
-      cartDetailsDiv = document.getElementById("cartDetails");
+      let cartDetailsDiv = document.getElementById("cartDetails");
       if (cart.length == 0) {
         cartDetailsDiv.innerHTML =
           "You have no items in your cart, go to the product catalogue page to see our available products";
@@ -138,6 +138,7 @@ $(document).ready(function () {
         // create the table
         let table = document.createElement("table");
         let headerRow = document.createElement("tr");
+        let tHeadElement = document.createElement("thead");
 
         // create the headers
         let nameHeader = document.createElement("th");
@@ -151,19 +152,67 @@ $(document).ready(function () {
         priceHeader.innerHTML = "Price";
         totalHeader.innerHTML = "Total";
 
+        // append the th to the tr
+        headerRow.appendChild(nameHeader);
+        headerRow.appendChild(quantityHeader);
+        headerRow.appendChild(priceHeader);
+        headerRow.appendChild(totalHeader);
+
+        // append the thead
+        tHeadElement.appendChild(headerRow);
+
+        // append row to table
+        table.appendChild(tHeadElement);
+
+        // id for table
+        table.setAttribute("id", "cartTable");
+
+        // append table to div
+        cartDetailsDiv.appendChild(table);
+        // found this on stackoverflow as A good way to add lots of classes to the table for styling with bootstrap
+        // https://stackoverflow.com/questions/1988514/javascript-css-how-to-add-and-remove-multiple-css-classes-to-an-element
+        // add all the classes to an array
+        let classesToAdd = [
+          "table",
+          "table-dark",
+          "table-striped",
+          "table-responsive-sm",
+        ];
+
+        // add the classes to the table with the es6 spread operator
+        table.classList.add(...classesToAdd);
+
         cart.forEach(function (item) {
           let itemTotal = item.price * item.quantity;
 
+          // table body
+          let tableBody = document.createElement("tbody");
+
+          // make the item row
+          let itemRow = document.createElement("tr");
+
           // make a table with item , quantity, price total and then at the bottom a subtotal
-          let nameDetail = document.createElement("h3");
-          let quantityDetail = document.createElement("h3");
-          let priceDetail = document.createElement("h3");
-          let itemTotalDetail = document.createElement("h3");
+          let nameDetail = document.createElement("td");
+          let quantityDetail = document.createElement("td");
+          let priceDetail = document.createElement("td");
+          let itemTotalDetail = document.createElement("td");
 
           nameDetail.innerHTML = item.name;
           quantityDetail.innerHTML = item.quantityDetail;
           priceDetail.innerHTML = "R " + item.price;
-          itemTotalDetail.innerHTML = "R" + itemTotal;
+          itemTotalDetail.innerHTML = "R " + itemTotal;
+
+          // append the detail to the row
+          itemRow.appendChild(nameDetail);
+          itemRow.appendChild(quantityDetail);
+          itemRow.appendChild(priceDetail);
+          itemRow.appendChild(itemTotalDetail);
+
+          // append to body
+          tableBody.appendChild(itemRow);
+
+          // append to table
+          table.appendChild(tableBody);
         });
       }
     }
