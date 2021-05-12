@@ -6,10 +6,12 @@ function Emoji(price, name, description, imgSrc, id) {
   this.description = description;
   this.imgSrc = imgSrc;
   this.id = id;
+  this.vat = (price * 0.14).toFixed(2); //calculate the vat for each object for use later on
+  this.totalPrice = (price * 1.14).toFixed(2);
 }
 
 let clownEmoji = new Emoji(
-  350000,
+  "350000.00",
   "Clown",
   "You could be the class clown if you buy this emoji!",
   "clown.png",
@@ -17,7 +19,7 @@ let clownEmoji = new Emoji(
 );
 
 let unicornEmoji = new Emoji(
-  420000,
+  "420000.00",
   "Unicorn",
   "If you own this emoji, you will turn your company into a unicorn",
   "unicorn.png",
@@ -25,7 +27,7 @@ let unicornEmoji = new Emoji(
 );
 
 let devilEmoji = new Emoji(
-  12000,
+  "12000.00",
   "Devil",
   "Show your feisty side to your mates with this emoji you naughty devil!",
   "devil.png",
@@ -33,7 +35,7 @@ let devilEmoji = new Emoji(
 );
 
 let heartEmoji = new Emoji(
-  135000,
+  "135000.00",
   "Heart",
   "You could own love if you just bought this one",
   "heart.png",
@@ -41,7 +43,7 @@ let heartEmoji = new Emoji(
 );
 
 let heartEyesEmoji = new Emoji(
-  233000,
+  "233000.00",
   "Heart Eyes",
   "Charge royalties whenever those annoying love birds use this emoji",
   "heartEyes.png",
@@ -49,7 +51,7 @@ let heartEyesEmoji = new Emoji(
 );
 
 let nerdEmoji = new Emoji(
-  154000,
+  "154000.00",
   "Nerd",
   "Be the first cool nerd by buying this guy",
   "nerd.png",
@@ -57,7 +59,7 @@ let nerdEmoji = new Emoji(
 );
 
 let poopEmoji = new Emoji(
-  122000,
+  "122000.00",
   "Poop",
   "Who doesn't like a scoop of chocolate ice-cream ....",
   "poop.png",
@@ -65,7 +67,7 @@ let poopEmoji = new Emoji(
 );
 
 let sickEmoji = new Emoji(
-  54000,
+  "54000.00",
   "Sick",
   "Instead of calling in sick, just send your boss this emoji",
   "sick.png",
@@ -73,7 +75,7 @@ let sickEmoji = new Emoji(
 );
 
 let skullEmoji = new Emoji(
-  320000,
+  "320000.00",
   "Skull",
   "Buy this one now before the grim reaper does",
   "skull.png",
@@ -81,7 +83,7 @@ let skullEmoji = new Emoji(
 );
 
 let thumbsUpEmoji = new Emoji(
-  420000,
+  "420000.00",
   "Thumbs Up",
   "Congrats for making it all the way to the end of the list and reading all the details",
   "thumbsup.png",
@@ -144,18 +146,21 @@ $(document).ready(function () {
         let nameHeader = document.createElement("th");
         let quantityHeader = document.createElement("th");
         let priceHeader = document.createElement("th");
+        let vatHeader = document.createElement("th");
         let totalHeader = document.createElement("th");
 
         // put the headers text in the element
         nameHeader.innerHTML = "Item";
         quantityHeader.innerHTML = "Quantity";
         priceHeader.innerHTML = "Price";
+        vatHeader.innerHTML = "VAT (14%)";
         totalHeader.innerHTML = "Total";
 
         // append the th to the tr
         headerRow.appendChild(nameHeader);
         headerRow.appendChild(quantityHeader);
         headerRow.appendChild(priceHeader);
+        headerRow.appendChild(vatHeader);
         headerRow.appendChild(totalHeader);
 
         // append the thead
@@ -182,11 +187,13 @@ $(document).ready(function () {
         // add the classes to the table with the es6 spread operator
         table.classList.add(...classesToAdd);
 
-        cart.forEach(function (item) {
-          let itemTotal = item.price * item.quantity;
+        // table body
+        let tableBody = document.createElement("tbody");
 
-          // table body
-          let tableBody = document.createElement("tbody");
+        cart.forEach(function (item) {
+          let itemTotal = Number(item.totalPrice) * Number(item.quantity);
+
+          console.log(item);
 
           // make the item row
           let itemRow = document.createElement("tr");
@@ -195,17 +202,20 @@ $(document).ready(function () {
           let nameDetail = document.createElement("td");
           let quantityDetail = document.createElement("td");
           let priceDetail = document.createElement("td");
+          let vatDetail = document.createElement("td");
           let itemTotalDetail = document.createElement("td");
 
           nameDetail.innerHTML = item.name;
-          quantityDetail.innerHTML = item.quantityDetail;
+          quantityDetail.innerHTML = item.quantity;
           priceDetail.innerHTML = "R " + item.price;
-          itemTotalDetail.innerHTML = "R " + itemTotal;
+          vatDetail.innerHTML = "R " + item.vat;
+          itemTotalDetail.innerHTML = "R " + itemTotal.toFixed(2);
 
           // append the detail to the row
           itemRow.appendChild(nameDetail);
           itemRow.appendChild(quantityDetail);
           itemRow.appendChild(priceDetail);
+          itemRow.appendChild(vatDetail);
           itemRow.appendChild(itemTotalDetail);
 
           // append to body
@@ -214,22 +224,79 @@ $(document).ready(function () {
           // append to table
           table.appendChild(tableBody);
         });
+
+        //work out the total
+        let total = 0;
+        for (let i = 0; i < cart.length; i++) {
+          total += cart[i].quantity * cart[i].totalPrice;
+        }
+
+        // add the subtotal line to the bottom of the table
+
+        let itemRow = document.createElement("tr");
+
+        // make a table with item , quantity, price total and then at the bottom a subtotal
+        let nameDetail = document.createElement("td");
+        let quantityDetail = document.createElement("td");
+        let priceDetail = document.createElement("td");
+        let vatDetail = document.createElement("td");
+        let itemTotalDetail = document.createElement("td");
+
+        nameDetail.innerHTML = "";
+        quantityDetail.innerHTML = "";
+        priceDetail.innerHTML = "";
+        vatDetail.innerHTML = "Total:";
+        itemTotalDetail.innerHTML = "R " + total.toFixed(2);
+
+        // append the detail to the row
+        itemRow.appendChild(nameDetail);
+        itemRow.appendChild(quantityDetail);
+        itemRow.appendChild(priceDetail);
+        itemRow.appendChild(vatDetail);
+        itemRow.appendChild(itemTotalDetail);
+
+        // append to body
+        tableBody.appendChild(itemRow);
+
+        // append to table
+        table.appendChild(tableBody);
       }
     }
   }
 
   function addToCart(emoji) {
-    let quantity = document.getElementById("quantityInput").value;
-    // console.log(quantity, emoji.name);
-    cart.push({ name: emoji.name, quantity: quantity, price: emoji.price });
-    // console.log(cart);
+    if (document.getElementById("quantityInput").value.length == 0) {
+      alert("Please enter a quantity before adding to cart");
+    } else {
+      let quantity = Number(document.getElementById("quantityInput").value);
 
-    localStorage.setItem("shoppingCart", JSON.stringify(cart));
+      // console.log(quantity, emoji.name);
+      cart.push({
+        name: emoji.name,
+        quantity: quantity,
+        price: emoji.price,
+        vat: emoji.vat,
+        totalPrice: emoji.totalPrice,
+      });
+      // console.log(cart);
 
-    // reload the cart list on the cart page
-    loadCartList();
+      localStorage.setItem("shoppingCart", JSON.stringify(cart));
 
-    // make an alert saying the item has been added to cart
+      // reload the cart list on the cart page
+      loadCartList();
+
+      // make an alert saying the item has been added to cart
+      //work out the total
+      let total = 0;
+      for (let i = 0; i < cart.length; i++) {
+        total += cart[i].quantity * cart[i].price;
+      }
+      alert("Successfully added to cart, your current total is R " + total);
+
+      // close the dialog after the item has been successfully added to the cart
+
+      closeDialog();
+    }
   }
 
   // Close dialog function
