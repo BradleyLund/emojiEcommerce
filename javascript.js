@@ -105,6 +105,18 @@ let emojis = [
   thumbsUpEmoji,
 ];
 
+// a discountcodes arrayto get your discount
+let discountCodes = ["ELONDOGE", "STINGRAY", "EMOJI2021", "MJCHICAGO"];
+
+// function to verify discount codes when plugged in
+
+function verifyDiscount() {
+  // get what they have entered
+  let codeSubmitted = document.getElementById("coupon").value;
+
+  alert(codeSubmitted);
+}
+
 function closeDialog() {
   // once the dialog is open there is an element on the DOM with the id of dialog
   let dialog = document.getElementById("dialog");
@@ -137,6 +149,7 @@ $(document).ready(function () {
         cartDetailsDiv.innerHTML =
           "You have no items in your cart, go to the product catalogue page to see our available products";
       } else {
+        cartDetailsDiv.innerHTML = ""; //clear the table for every reload
         // create the table
         let table = document.createElement("table");
         let headerRow = document.createElement("tr");
@@ -148,13 +161,15 @@ $(document).ready(function () {
         let priceHeader = document.createElement("th");
         let vatHeader = document.createElement("th");
         let totalHeader = document.createElement("th");
+        let removeHeader = document.createElement("th");
 
         // put the headers text in the element
         nameHeader.innerHTML = "Item";
         quantityHeader.innerHTML = "Quantity";
         priceHeader.innerHTML = "Price";
         vatHeader.innerHTML = "VAT (14%)";
-        totalHeader.innerHTML = "Total";
+        totalHeader.innerHTML = "Sub-Total";
+        removeHeader.innerHTML = "Remove?";
 
         // append the th to the tr
         headerRow.appendChild(nameHeader);
@@ -162,6 +177,7 @@ $(document).ready(function () {
         headerRow.appendChild(priceHeader);
         headerRow.appendChild(vatHeader);
         headerRow.appendChild(totalHeader);
+        headerRow.appendChild(removeHeader);
 
         // append the thead
         tHeadElement.appendChild(headerRow);
@@ -190,10 +206,9 @@ $(document).ready(function () {
         // table body
         let tableBody = document.createElement("tbody");
 
-        cart.forEach(function (item) {
+        cart.forEach(function (item, index) {
+          //get the index if the item in the array for use in the removebutton
           let itemTotal = Number(item.totalPrice) * Number(item.quantity);
-
-          console.log(item);
 
           // make the item row
           let itemRow = document.createElement("tr");
@@ -204,6 +219,7 @@ $(document).ready(function () {
           let priceDetail = document.createElement("td");
           let vatDetail = document.createElement("td");
           let itemTotalDetail = document.createElement("td");
+          let removeDetail = document.createElement("td");
 
           nameDetail.innerHTML = item.name;
           quantityDetail.innerHTML = item.quantity;
@@ -211,12 +227,28 @@ $(document).ready(function () {
           vatDetail.innerHTML = "R " + item.vat;
           itemTotalDetail.innerHTML = "R " + itemTotal.toFixed(2);
 
+          //   add a remove from cart button
+          let removeButton = document.createElement("button");
+          removeButton.innerHTML = "X";
+
+          removeButton.addEventListener("click", function (e) {
+            removeFromCart(index);
+          });
+
+          //add the desired classes to the button for styling like I did with the table above
+          let btnClasses = ["btn", "btn-danger"]; //red because we don't want the customer to remove anything from the cart
+
+          removeButton.classList.add(...btnClasses);
+
+          removeDetail.appendChild(removeButton);
+
           // append the detail to the row
           itemRow.appendChild(nameDetail);
           itemRow.appendChild(quantityDetail);
           itemRow.appendChild(priceDetail);
           itemRow.appendChild(vatDetail);
           itemRow.appendChild(itemTotalDetail);
+          itemRow.appendChild(removeButton);
 
           // append to body
           tableBody.appendChild(itemRow);
@@ -224,45 +256,22 @@ $(document).ready(function () {
           // append to table
           table.appendChild(tableBody);
         });
-
-        //work out the total
-        let total = 0;
-        for (let i = 0; i < cart.length; i++) {
-          total += cart[i].quantity * cart[i].totalPrice;
-        }
-
-        // add the subtotal line to the bottom of the table
-
-        let itemRow = document.createElement("tr");
-
-        // make a table with item , quantity, price total and then at the bottom a subtotal
-        let nameDetail = document.createElement("td");
-        let quantityDetail = document.createElement("td");
-        let priceDetail = document.createElement("td");
-        let vatDetail = document.createElement("td");
-        let itemTotalDetail = document.createElement("td");
-
-        nameDetail.innerHTML = "";
-        quantityDetail.innerHTML = "";
-        priceDetail.innerHTML = "";
-        vatDetail.innerHTML = "Total:";
-        itemTotalDetail.innerHTML = "R " + total.toFixed(2);
-
-        // append the detail to the row
-        itemRow.appendChild(nameDetail);
-        itemRow.appendChild(quantityDetail);
-        itemRow.appendChild(priceDetail);
-        itemRow.appendChild(vatDetail);
-        itemRow.appendChild(itemTotalDetail);
-
-        // append to body
-        tableBody.appendChild(itemRow);
-
-        // append to table
-        table.appendChild(tableBody);
       }
     }
   }
+
+  // remove from cart function that is used in the table
+
+  function removeFromCart(index) {
+    // remove it from the array cart, reset the local storage for shopping cart, rerun the loadcartlist function
+    cart.splice(index, 1);
+
+    localStorage.setItem("shoppingCart", JSON.stringify(cart));
+
+    loadCartList();
+  }
+
+  // add to cart function
 
   function addToCart(emoji) {
     if (document.getElementById("quantityInput").value.length == 0) {
@@ -270,7 +279,6 @@ $(document).ready(function () {
     } else {
       let quantity = Number(document.getElementById("quantityInput").value);
 
-      // console.log(quantity, emoji.name);
       cart.push({
         name: emoji.name,
         quantity: quantity,
@@ -278,7 +286,6 @@ $(document).ready(function () {
         vat: emoji.vat,
         totalPrice: emoji.totalPrice,
       });
-      // console.log(cart);
 
       localStorage.setItem("shoppingCart", JSON.stringify(cart));
 

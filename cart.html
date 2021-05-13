@@ -69,7 +69,9 @@
                     <input type="text" class="form-control" id="coupon" placeholder="Discount code">
                 </div>
                 <div class="col-sm text-center">
-                    <input class="btn btn-primary" type="submit" value="Verify">
+                    <!-- changed the type from submit to button so it would act like a normal button not a form submit -->
+                    <input class="btn btn-primary" type="button" value="Verify" onclick="verifyDiscount()">
+
                 </div>
             </div>
 
