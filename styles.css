@@ -135,6 +135,7 @@ got this snippet from https://stackoverflow.com/questions/20079782/changing-the-
     
 }
 
+
 #welcome {
     padding-top: 100px;
 }
@@ -158,4 +159,9 @@ got this snippet from https://stackoverflow.com/questions/20079782/changing-the-
     {
         background-position: 0% 50%;
     }
+}
+
+#discountsForm {
+    width: 90%;
+    margin-left: 50px;
 }
