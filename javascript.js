@@ -108,13 +108,47 @@ let emojis = [
 // a discountcodes arrayto get your discount
 let discountCodes = ["ELONDOGE", "STINGRAY", "EMOJI2021", "MJCHICAGO"];
 
+// initialise a discount applied variable
+
+let discountApplied = false;
+
 // function to verify discount codes when plugged in
 
 function verifyDiscount() {
   // get what they have entered
   let codeSubmitted = document.getElementById("coupon").value;
 
-  alert(codeSubmitted);
+  //put the string submitted into an array with each character
+  let codeSubmittedArr = codeSubmitted.split("");
+  console.log(codeSubmittedArr);
+  if (codeSubmitted.length != 0) {
+    //go through each code
+    for (let i = 0; i < discountCodes.length; i++) {
+      let codeCorrect = true;
+      let code = discountCodes[i].split("");
+      console.log(code);
+      // go through each character in the code
+      if (discountApplied === false) {
+        console.log(code);
+        for (let j = 0; j < code.length; j++) {
+          if (codeSubmittedArr[j] != code[j]) {
+            codeCorrect = false;
+          }
+        }
+        if (codeCorrect === true) {
+          discountApplied = true;
+        }
+      }
+    }
+
+    if (discountApplied === true) {
+      alert("Success! Your 20% discount has been applied!");
+    } else {
+      alert(codeSubmitted + " is not a valid discount code, please try again");
+    }
+  } else {
+    alert("You have not entered a discount code, please try again");
+  }
 }
 
 function closeDialog() {
@@ -256,6 +290,17 @@ $(document).ready(function () {
           // append to table
           table.appendChild(tableBody);
         });
+
+        // load up the totalcost to the totalheading
+        let totalHeading = document.getElementById("totalCost");
+
+        // calculate the total
+        let total = 0;
+        for (let i = 0; i < cart.length; i++) {
+          total += cart[i].quantity * cart[i].totalPrice;
+        }
+
+        totalHeading.innerHTML = "R " + total;
       }
     }
   }
@@ -293,12 +338,14 @@ $(document).ready(function () {
       loadCartList();
 
       // make an alert saying the item has been added to cart
-      //work out the total
+      // calculate the total
       let total = 0;
       for (let i = 0; i < cart.length; i++) {
-        total += cart[i].quantity * cart[i].price;
+        total += cart[i].quantity * cart[i].totalPrice;
       }
-      alert("Successfully added to cart, your current total is R " + total);
+      alert(
+        "Successfully added to cart, your current total, with VAT is R " + total
+      );
 
       // close the dialog after the item has been successfully added to the cart
 
