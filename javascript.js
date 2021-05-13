@@ -179,9 +179,13 @@ $(document).ready(function () {
     if (document.getElementById("cartDetails") != null) {
       //basically checking if the user is on the cart page so the div would be there to be loaded
       let cartDetailsDiv = document.getElementById("cartDetails");
+      // load up the totalcost to the totalheading
+      let totalHeading = document.getElementById("totalCost");
+
       if (cart.length == 0) {
         cartDetailsDiv.innerHTML =
           "You have no items in your cart, go to the product catalogue page to see our available products";
+        totalHeading.innerHTML = "R 0.00";
       } else {
         cartDetailsDiv.innerHTML = ""; //clear the table for every reload
         // create the table
@@ -290,9 +294,6 @@ $(document).ready(function () {
           // append to table
           table.appendChild(tableBody);
         });
-
-        // load up the totalcost to the totalheading
-        let totalHeading = document.getElementById("totalCost");
 
         // calculate the total
         let total = 0;
