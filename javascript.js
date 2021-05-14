@@ -105,65 +105,6 @@ let emojis = [
   thumbsUpEmoji,
 ];
 
-// a discountcodes arrayto get your discount
-let discountCodes = ["ELONDOGE", "STINGRAY", "EMOJI2021", "MJCHICAGO"];
-
-// initialise a discount applied variable
-
-let discountApplied = false;
-
-// function to verify discount codes when plugged in
-
-function verifyDiscount() {
-  // get what they have entered
-  let codeSubmitted = document.getElementById("coupon").value;
-
-  //put the string submitted into an array with each character
-  let codeSubmittedArr = codeSubmitted.split("");
-  console.log(codeSubmittedArr);
-  if (codeSubmitted.length != 0) {
-    //go through each code
-    for (let i = 0; i < discountCodes.length; i++) {
-      let codeCorrect = true;
-      let code = discountCodes[i].split("");
-      console.log(code);
-      // go through each character in the code
-      if (discountApplied === false) {
-        console.log(code);
-        for (let j = 0; j < code.length; j++) {
-          if (codeSubmittedArr[j] != code[j]) {
-            codeCorrect = false;
-          }
-        }
-        if (codeCorrect === true) {
-          discountApplied = true;
-        }
-      }
-    }
-
-    if (discountApplied === true) {
-      alert("Success! Your 20% discount has been applied!");
-    } else {
-      alert(codeSubmitted + " is not a valid discount code, please try again");
-    }
-  } else {
-    alert("You have not entered a discount code, please try again");
-  }
-}
-
-function closeDialog() {
-  // once the dialog is open there is an element on the DOM with the id of dialog
-  let dialog = document.getElementById("dialog");
-
-  // we can use the built in dialog element close method.
-  dialog.close();
-
-  // once we have closed it we need to remove the element so that each time a different car is clicked on
-  // the dialog element will be able to be the correct one and have the close functionality
-
-  dialog.remove();
-}
-
 $(document).ready(function () {
   // initialize the cart array
   let cart = [];
@@ -172,6 +113,75 @@ $(document).ready(function () {
     localStorage.setItem("shoppingCart", JSON.stringify(cart));
   } else {
     cart = JSON.parse(localStorage.getItem("shoppingCart"));
+  }
+
+  // a discountcodes arrayto get your discount
+  let discountCodes = ["ELONDOGE", "STINGRAY", "EMOJI2021", "MJCHICAGO"];
+
+  // initialise a discount applied variable
+
+  let discountApplied = false;
+
+  // function to verify discount codes when plugged in
+
+  function verifyDiscount() {
+    // get what they have entered
+    let codeSubmitted = document.getElementById("coupon").value;
+
+    //put the string submitted into an array with each character
+    let codeSubmittedArr = codeSubmitted.split("");
+    console.log(codeSubmittedArr);
+    if (codeSubmitted.length != 0) {
+      //go through each code
+      for (let i = 0; i < discountCodes.length; i++) {
+        let codeCorrect = true;
+        let code = discountCodes[i].split("");
+        console.log(code);
+        // go through each character in the code
+        if (discountApplied === false) {
+          console.log(code);
+          for (let j = 0; j < code.length; j++) {
+            if (codeSubmittedArr[j] != code[j]) {
+              codeCorrect = false;
+            }
+          }
+          if (codeCorrect === true) {
+            discountApplied = true;
+          }
+        }
+      }
+
+      if (discountApplied === true) {
+        loadCartList();
+        alert("Success! Your 20% discount has been applied!");
+      } else {
+        alert(
+          codeSubmitted + " is not a valid discount code, please try again"
+        );
+      }
+    } else {
+      alert("You have not entered a discount code, please try again");
+    }
+  }
+
+  let verifyButton = document.getElementById("verifyButton");
+  //add event listener with onclick to the button with the function
+
+  verifyButton.addEventListener("click", function (event) {
+    verifyDiscount();
+  });
+
+  function closeDialog() {
+    // once the dialog is open there is an element on the DOM with the id of dialog
+    let dialog = document.getElementById("dialog");
+
+    // we can use the built in dialog element close method.
+    dialog.close();
+
+    // once we have closed it we need to remove the element so that each time a different car is clicked on
+    // the dialog element will be able to be the correct one and have the close functionality
+
+    dialog.remove();
   }
 
   // code to populate the check out list
@@ -299,6 +309,11 @@ $(document).ready(function () {
         let total = 0;
         for (let i = 0; i < cart.length; i++) {
           total += cart[i].quantity * cart[i].totalPrice;
+        }
+        console.log(discountApplied);
+
+        if (discountApplied == true) {
+          total = total * 0.8; //the twenty percent discount
         }
 
         totalHeading.innerHTML = "R " + total;

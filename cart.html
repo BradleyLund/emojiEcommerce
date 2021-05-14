@@ -62,18 +62,33 @@
         <div id="cartDetails" style="width: 75%;" class="container"></div>
         <br>
         <br>
-        <form id="discountsForm">
+        <form>
             <div class="form-group row text-center">
                 <label class="col-sm col-form-label" for="coupon">Enter a discount coupon:</label>
-                <div class="col-sm">
+                <div class="col-sm ">
                     <input type="text" class="form-control" id="coupon" placeholder="Discount code">
                 </div>
+
                 <div class="col-sm text-center">
                     <!-- changed the type from submit to button so it would act like a normal button not a form submit -->
-                    <input class="btn btn-primary" type="button" value="Verify" onclick="verifyDiscount()">
+                    <input id="verifyButton" class="btn btn-primary" type="button" value="Verify">
 
                 </div>
             </div>
+            <br>
+            <br>
+
+
+            <!-- FORM FOR DELIVERY OPTIONS -->
+            <h3>Would you like delivery or collection?</h3>
+
+            <input type="radio" id="delivery" name="delivery" value="delivery">
+            <label for="delivery">Delivery</label><br>
+            <input type="radio" id="collection" name="delivery" value="collection">
+            <label for="no">Collection</label><br>
+            <!-- put in two forms here, one for collection, one for delivery and use show/hide functionality for when the radio buttons are clicked -->
+            <br>
+
 
         </form>
         <br>
@@ -82,6 +97,9 @@
             <h3 class="text-center">Your current total is:</h3>
             <h3 id="totalCost"></h3>
         </div>
+
+        <br>
+        <br>
     </div>
 
 
