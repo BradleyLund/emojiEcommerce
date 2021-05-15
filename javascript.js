@@ -164,12 +164,14 @@ $(document).ready(function () {
     }
   }
 
-  let verifyButton = document.getElementById("verifyButton");
-  //add event listener with onclick to the button with the function
+  if (document.getElementById("verifyButton") != null) {
+    let verifyButton = document.getElementById("verifyButton");
+    //add event listener with onclick to the button with the function
 
-  verifyButton.addEventListener("click", function (event) {
-    verifyDiscount();
-  });
+    verifyButton.addEventListener("click", function (event) {
+      verifyDiscount();
+    });
+  }
 
   // initialise delivery boolean
   let delivery = false;
@@ -193,16 +195,19 @@ $(document).ready(function () {
     loadCartList();
   }
 
-  let deliveryRadio = document.getElementById("delivery");
-  let collectionRadio = document.getElementById("collection");
+  // basically checking if the user is on the checkout page
+  if (document.getElementById("delivery") != null) {
+    let deliveryRadio = document.getElementById("delivery");
+    let collectionRadio = document.getElementById("collection");
 
-  deliveryRadio.addEventListener("click", function (event) {
-    showHideDiv();
-  });
+    deliveryRadio.addEventListener("click", function (event) {
+      showHideDiv();
+    });
 
-  collectionRadio.addEventListener("click", function (event) {
-    showHideDiv();
-  });
+    collectionRadio.addEventListener("click", function (event) {
+      showHideDiv();
+    });
+  }
 
   function closeDialog() {
     // once the dialog is open there is an element on the DOM with the id of dialog
@@ -463,6 +468,45 @@ $(document).ready(function () {
       }
     }
   });
+
+  // confirm order button with a reference number generator
+  // ?going to use a random 8 digit number and the dae to make one code we could use the database once that is hooked up to make sure it is unique
+  if (document.getElementById("confirmButton") != null) {
+    let confirmButton = document.getElementById("confirmButton");
+
+    confirmButton.addEventListener("click", function (event) {
+      // check they have put something in the cart
+      if (cart.length <= 0) {
+        alert(
+          "You don't have anything in your cart, please go to the catalogue page to browse"
+        );
+      } else {
+        let date = new Date();
+        let year = date.getFullYear().toString();
+        // the month comes back 0-11 and i want it to always be two digits so put the leading zero and then slice from the back
+        let month = ("0" + (date.getMonth() + 1).toString()).slice(-2);
+        //same with the day
+        let day = ("0" + date.getDate().toString()).slice(-2);
+        let referenceNumber = year + month + day;
+
+        let generatedDigits = "";
+        // generate a random 8 digit number
+        for (i = 0; i < 8; i++) {
+          generatedDigits += Math.round(Math.random() * 10).toString();
+        }
+        referenceNumber += generatedDigits;
+
+        // clear the cart and reload the page
+        cart = [];
+
+        localStorage.setItem("shoppingCart", JSON.stringify(cart));
+
+        alert("Your order has been placed successfully" + referenceNumber);
+
+        loadCartList();
+      }
+    });
+  }
 
   //load up the div with the items in our trolley
   loadCartList();
