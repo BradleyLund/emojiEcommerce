@@ -171,6 +171,39 @@ $(document).ready(function () {
     verifyDiscount();
   });
 
+  // initialise delivery boolean
+  let delivery = false;
+
+  // function to show the delivery form if delivery is checked and hide it if not
+  //a function which contains showing / hiding
+  function showHideDiv() {
+    let deliveryRadio = document.getElementById("delivery");
+    console.log(deliveryRadio.checked);
+    if (deliveryRadio.checked == true) {
+      //show the div
+      let deliveryForm = document.getElementById("deliveryForm");
+      deliveryForm.style.display = "block";
+      delivery = true;
+    } else {
+      //hide the div
+      let deliveryForm = document.getElementById("deliveryForm");
+      deliveryForm.style.display = "none";
+      delivery = false;
+    }
+    loadCartList();
+  }
+
+  let deliveryRadio = document.getElementById("delivery");
+  let collectionRadio = document.getElementById("collection");
+
+  deliveryRadio.addEventListener("click", function (event) {
+    showHideDiv();
+  });
+
+  collectionRadio.addEventListener("click", function (event) {
+    showHideDiv();
+  });
+
   function closeDialog() {
     // once the dialog is open there is an element on the DOM with the id of dialog
     let dialog = document.getElementById("dialog");
@@ -316,7 +349,11 @@ $(document).ready(function () {
           total = total * 0.8; //the twenty percent discount
         }
 
-        totalHeading.innerHTML = "R " + total;
+        if (delivery == true) {
+          total += 60;
+        }
+
+        totalHeading.innerHTML = "R " + total.toFixed(2);
       }
     }
   }

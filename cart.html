@@ -62,7 +62,7 @@
         <div id="cartDetails" style="width: 75%;" class="container"></div>
         <br>
         <br>
-        <form>
+        <form class="container">
             <div class="form-group row text-center">
                 <label class="col-sm col-form-label" for="coupon">Enter a discount coupon:</label>
                 <div class="col-sm ">
@@ -83,11 +83,27 @@
             <h3>Would you like delivery or collection?</h3>
 
             <input type="radio" id="delivery" name="delivery" value="delivery">
-            <label for="delivery">Delivery</label><br>
+            <label for="delivery">Delivery (R60)</label><br>
             <input type="radio" id="collection" name="delivery" value="collection">
-            <label for="no">Collection</label><br>
+            <label for="collection">Collection (Free)</label><br>
             <!-- put in two forms here, one for collection, one for delivery and use show/hide functionality for when the radio buttons are clicked -->
             <br>
+            <!-- enter address -->
+            <div id="deliveryForm" style="display: none">
+                <div class="form-group">
+                    <label for="delieveryAddress">Delivery address</label>
+
+                    <textarea class="form-control" id="delieveryAddress"></textarea>
+
+                </div>
+
+
+                <div class="form-group">
+                    <label for="deliveryNotes">Notes for delivery driver</label>
+                    <textarea class="form-control" id="deliveryNotes" rows="3"></textarea>
+                </div>
+            </div>
+
 
 
         </form>
