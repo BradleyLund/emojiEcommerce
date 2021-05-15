@@ -508,6 +508,16 @@ $(document).ready(function () {
     });
   }
 
+  // select the trolley and animate it
+  function moveTrolley() {
+    //  an animation and a chained effect
+    $("#movingTrolley")
+      .animate({ left: "+=400" }, 5000)
+      .animate({ left: "-=800" }, 10000)
+      .animate({ left: "+=400" }, 5000);
+  }
+  moveTrolley();
+
   //load up the div with the items in our trolley
   loadCartList();
 });
