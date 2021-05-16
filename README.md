@@ -5,7 +5,12 @@ My display of a concept online store with full shopping cart functionality selli
 You can see a live version of the website here: https://bradleylund.github.io/emojiEcommerce/
 
 ## Table of contents
-[Installation](https://github.com/BradleyLund/emojiEcommerce/blob/main/README.md#installation)
+* [Installation](https://github.com/BradleyLund/emojiEcommerce/blob/main/README.md#installation)
+* [Usage](https://github.com/BradleyLund/emojiEcommerce/blob/main/README.md#usage)
+  * [Home Page](https://github.com/BradleyLund/emojiEcommerce/blob/main/README.md#home-page)
+  * [About Us Page](https://github.com/BradleyLund/emojiEcommerce/blob/main/README.md#about-us-page)
+  * [Product Catalogue Page](https://github.com/BradleyLund/emojiEcommerce/blob/main/README.md#product-catalogue-page)
+  * [Shopping Cart Page](https://github.com/BradleyLund/emojiEcommerce/blob/main/README.md#shopping-cart-page)
 
 ## Installation
 
