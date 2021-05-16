@@ -4,6 +4,9 @@ My display of a concept online store with full shopping cart functionality selli
 
 You can see a live version of the website here: https://bradleylund.github.io/emojiEcommerce/
 
+## Table of contents
+[Installation](https://github.com/BradleyLund/emojiEcommerce/blob/main/README.md#installation)
+
 ## Installation
 
 Just clone the repository and open the index.html file with your browser and everything should work from there!
